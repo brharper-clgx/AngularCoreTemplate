@@ -1,20 +1,21 @@
 using System;
 using System.Linq;
-using template.web.Controllers;
 using Xunit;
+using template.domain.models;
+using template.domain.services;
 
-namespace template.test.web.controllers
+namespace template.test.domain.services
 {
-    public class SampleDataControllerTests
+    public class WeatherServiceTests
     {
         [Fact]
         public void SampleDataController_WeatherForecasts_ShouldReturnFiveItems()
         {
             // Arrange
-            var target = new SampleDataController();
+            var target = new WeatherService();
             
             // Act
-            var result = target.WeatherForecasts();
+            var result = target.GetForecast();
 
             // Assert
             Assert.Equal(5, result.Count());
@@ -24,10 +25,10 @@ namespace template.test.web.controllers
         public void SampleDataController_WeatherForecasts_ForecastDataIsPopulated()
         {
             // Arrange
-            var target = new SampleDataController();
+            var target = new WeatherService();
             
             // Act
-            var result = target.WeatherForecasts();
+            var result = target.GetForecast();
 
             // Assert
             Assert.NotNull(result.FirstOrDefault().DateFormatted);

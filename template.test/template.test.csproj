@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\template.web\template.web.csproj" />
+    <ProjectReference Include="..\template.domain\template.domain.csproj" />
   </ItemGroup>
 
 </Project>
