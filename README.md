@@ -48,6 +48,9 @@ The directory *ClientApp* contains all of the UI code. The directory *Controller
 
 The file *Startup.cs* is where your app is configured. We'll do more here later.
 
+
+
+
 ## Test Layer
 Automated tests will save you from an immense number of headaches. Write and run them often, and you'll catch bugs the moment they emerge and confidently deploy refactored code.
 
@@ -68,6 +71,8 @@ $ dotnet new solution
 $ dotnet sln add <app-name>.web/<app-name>.web.csproj <app-name>.test/<app-name>.test.csproj 
 ```
 
+Now would be a good time to make another commit.
+
 In your test directory, add a directory for testing your web layer, and in that directory create another directory for testing your controllers. We'll be adding a file for testing the *SampleDataController*:
 ```
 +-- <app-name>
@@ -80,11 +85,48 @@ In your test directory, add a directory for testing your web layer, and in that 
 |   |   |   |   +-- SampleDataControllerTests.cs
 ```
 
+Here's are some simple example tests your could write:
+```cs
+using System;
+using System.Linq;
+using <app-name>.web.Controllers;
+using Xunit;
 
+namespace <app-name>.test.web.controllers
+{
+    public class SampleDataControllerTests
+    {
+        [Fact]
+        public void SampleDataController_WeatherForecasts_ShouldReturnFiveItems()
+        {
+            // Arrange
+            var target = new SampleDataController();
+            
+            // Act
+            var result = target.WeatherForecasts();
 
+            // Assert
+            Assert.Equal(5, result.Count());
+        }
 
+        [Fact]
+        public void SampleDataController_WeatherForecasts_ForecastDataIsPopulated()
+        {
+            // Arrange
+            var target = new SampleDataController();
+            
+            // Act
+            var result = target.WeatherForecasts();
 
-
+            // Assert
+            Assert.NotNull(result.FirstOrDefault().DateFormatted);
+            Assert.NotNull(result.FirstOrDefault().Summary);
+            Assert.NotNull(result.FirstOrDefault().TemperatureC);
+            Assert.NotNull(result.FirstOrDefault().TemperatureF);
+        }
+    }
+}
+```
 
 
 

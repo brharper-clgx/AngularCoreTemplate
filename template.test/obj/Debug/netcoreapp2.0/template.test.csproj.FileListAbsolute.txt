@@ -1,0 +1,16 @@
+c:\Users\bryan\workspace\template\template.test\bin\Debug\netcoreapp2.0\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+c:\Users\bryan\workspace\template\template.test\bin\Debug\netcoreapp2.0\xunit.runner.reporters.netcoreapp10.dll
+c:\Users\bryan\workspace\template\template.test\bin\Debug\netcoreapp2.0\xunit.runner.utility.netcoreapp10.dll
+c:\Users\bryan\workspace\template\template.test\bin\Debug\netcoreapp2.0\template.test.deps.json
+c:\Users\bryan\workspace\template\template.test\bin\Debug\netcoreapp2.0\template.test.runtimeconfig.json
+c:\Users\bryan\workspace\template\template.test\bin\Debug\netcoreapp2.0\template.test.runtimeconfig.dev.json
+c:\Users\bryan\workspace\template\template.test\bin\Debug\netcoreapp2.0\template.test.dll
+c:\Users\bryan\workspace\template\template.test\bin\Debug\netcoreapp2.0\template.test.pdb
+c:\Users\bryan\workspace\template\template.test\bin\Debug\netcoreapp2.0\template.web.dll
+c:\Users\bryan\workspace\template\template.test\bin\Debug\netcoreapp2.0\template.web.pdb
+c:\Users\bryan\workspace\template\template.test\obj\Debug\netcoreapp2.0\template.test.csproj.CoreCompileInputs.cache
+c:\Users\bryan\workspace\template\template.test\obj\Debug\netcoreapp2.0\template.test.AssemblyInfoInputs.cache
+c:\Users\bryan\workspace\template\template.test\obj\Debug\netcoreapp2.0\template.test.AssemblyInfo.cs
+c:\Users\bryan\workspace\template\template.test\obj\Debug\netcoreapp2.0\template.test.csproj.CopyComplete
+c:\Users\bryan\workspace\template\template.test\obj\Debug\netcoreapp2.0\template.test.dll
+c:\Users\bryan\workspace\template\template.test\obj\Debug\netcoreapp2.0\template.test.pdb
