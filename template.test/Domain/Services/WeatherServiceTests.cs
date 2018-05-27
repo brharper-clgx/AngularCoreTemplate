@@ -26,7 +26,7 @@ namespace template.test.domain.services
         {
             // Arrange
             var target = new WeatherService();
-            
+             
             // Act
             var result = target.GetForecast();
 
