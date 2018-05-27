@@ -330,7 +330,7 @@ namespace myapp.test.domain.services
     public class WeatherServiceTests
     {
         [Fact]
-        public void SampleDataController_WeatherForecasts_ShouldReturnFiveItems()
+        public void WeatherService_WeatherForecasts_ShouldReturnFiveItems()
         {
             // Arrange
             var target = new WeatherService();
@@ -343,7 +343,7 @@ namespace myapp.test.domain.services
         }
 
         [Fact]
-        public void SampleDataController_WeatherForecasts_ForecastDataIsPopulated()
+        public void WeatherService_WeatherForecasts_ForecastDataIsPopulated()
         {
             // Arrange
             var target = new WeatherService();
@@ -359,10 +359,61 @@ namespace myapp.test.domain.services
         }
     }
 }
-
 ```
 
-But what if we *did* want to unit test our controller? The controller now has a dependency, *IWorksheetService*. But in unit tests, we don't want to test the dependency. We only want to test the logic of the function in question. In order to test the controller then, we would have to create a *fake* version of the *IWorksheetService* for testing. To do this, see [Moq][moq]
+Although the SampleDataController doesn't contain any logic, we *can* check to make sure that the controller calls our WeatherService. However, in a unit test, we don't want to call the *actual* WeatherService. This is because unit tests should test *only* the code of the component being tested. If we used the real WeatherService and *it* was broken, then our controller test would fail even though the problem is with the service and not the controller.
+
+We'll use a tool called [Moq][moq] to create fake versions of components we want to tests. Any component we want to *fake* (or *mock*) must have an interface. Luckily, we already have *IWeatherService*. First, add the Moq package to our test layer:
+```shell
+$ cd myapp.test
+$ dotnet add package Moq
+$ dotnet restore
+```
+
+Now we can create a fake version of the WeatherService, and verify that it was called in a controller unit test:
+>```
+>+-- myapp
+>|   +-- myapp.web
+>|   +-- myapp.domain
+>|   +-- myapp.data
+>|   +-- myapp.test
+>|   |   +-- Domain
+>|   |   +-- Web
+>|   |   |   +-- Controllers
+>|   |   |   |   +-- SampleDataControllerTests.cs
+>```
+
+**SampleDataControllerTests.cs**
+```cs
+using Moq;
+using myapp.domain.interfaces;
+using templmyappate.web.controllers;
+using Xunit;
+
+namespace myapp.test.web.controllers
+{
+    public class SampleDataControllerTests
+    {
+        [Fact]
+        public void SampleDataController_WeatherForecasts_ShouldCallWeatherService()
+        {
+            // Arrange
+            var mockWeatherService = new Mock<IWeatherService>();
+            var target = new SampleDataController(mockWeatherService.Object);
+
+            // Act
+            target.WeatherForecasts();
+
+            // Assert
+            mockWeatherService.Verify(w => w.GetForecast(), Times.Once);
+        }
+    }
+}
+```
+[Moq][moq] has a bunch of great features, so read through their docs. For example, you can *Setup* your mock to return a certain value when one of its functions are called. 
+```cs
+myMock.Setup(m => m.Foo()).Returns(true);
+```
 
 ## Data Layer
 Todo
