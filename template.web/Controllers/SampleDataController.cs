@@ -20,7 +20,7 @@ namespace template.web.controllers
         [HttpGet("[action]")]
         public IEnumerable<WeatherForecast> WeatherForecasts()
         {
-            return this._weatherService.GetForecast();
+            return _weatherService.GetForecast();
         }
     }
 }
