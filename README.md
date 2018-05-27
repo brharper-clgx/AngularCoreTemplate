@@ -387,7 +387,7 @@ Now we can create a fake version of the WeatherService, and verify that it was c
 ```cs
 using Moq;
 using myapp.domain.interfaces;
-using templmyappate.web.controllers;
+using myapp.web.controllers;
 using Xunit;
 
 namespace myapp.test.web.controllers
